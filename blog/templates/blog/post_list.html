@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Blog Posts</title>
+    <style>
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            max-width: 800px;
+            margin: 2rem auto;
+            padding: 0 1rem;
+            background: #f9f9f9;
+            color: #333;
+        }
+        h1 {
+            border-bottom: 2px solid #007acc;
+            padding-bottom: 0.5rem;
+        }
+        article {
+            background: white;
+            margin-bottom: 1.5rem;
+            padding: 1rem 1.5rem;
+            border-radius: 6px;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+        }
+        article h2 {
+            margin-top: 0;
+            color: #007acc;
+        }
+        article p {
+            white-space: pre-wrap;
+        }
+        .created-at {
+            font-size: 0.9rem;
+            color: #666;
+            margin-top: 0.5rem;
+        }
+    </style>
+</head>
+<body>
+    <h1>Blog Posts</h1>
+    {% for post in posts %}
+        <article>
+            <h2>{{ post.title }}</h2>
+            <div class="created-at">Posted on {{ post.created_at|date:"F j, Y, g:i a" }}</div>
+            <p>{{ post.content }}</p>
+        </article>
+    {% empty %}
+        <p>No posts available.</p>
+    {% endfor %}
+</body>
+</html>
